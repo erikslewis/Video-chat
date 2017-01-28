@@ -1,0 +1,138 @@
+<head>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/annyang/1.4.0/annyang.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<h1>Welcome To </h1>
+<div id="main">
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="index4.html">Music player</a>
+  <a href="index5.html">Picture editor</a>
+  <a href="index2.html">Camera</a>
+  <a href="index.html">Video Chat</a>
+  <a href="#">Contacts</a>
+</div>
+</div>
+
+<main>
+<h2>
+<div id="commands">
+  <h2>Voice Commands</h2>
+  <div id="loader"></div>
+     Play your favorite music with voice commands!
+     Use the commands below. Remember to allow the use of the microphone.</p>
+    <h2>For Example "Play Drake"</h2>
+
+        <p>Play "song name"</p>
+      <p> Play "song name"   By "artist name"</p>
+
+</div>
+<div id="conversation"></div>
+</main>
+
+</h2>
+<div>
+
+  <script>
+  function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+      document.getElementById("main").style.marginLeft = "250px";
+  }
+
+  function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+      document.getElementById("main").style.marginLeft= "0";
+  }
+
+
+  $(document).ready(function() {
+
+
+  (function () {
+        var audio = new Audio();
+
+        function searchTracks(query) {
+            $.ajax({
+                url: 'https://api.spotify.com/v1/search',
+                data: {
+                    q: query,
+                    type: 'track'
+                },
+                success: function (response) {
+                    if (response.tracks.items.length) {
+                        var track = response.tracks.items[0];
+                        audio.src = track.preview_url;
+                        audio.play();
+                        communicateAction('<div>Playing ' + track.name + ' by ' + track.artists[0].name + '</div><img width="150" src="' + track.album.images[1].url + '">');
+                    }
+                }
+            });
+        }
+
+        function playSong(songName, artistName) {
+            var query = songName;
+            if (artistName) {
+                query += ' artist:' + artistName;
+            }
+
+            searchTracks(query);
+        }
+
+        function communicateAction(text) {
+            var rec = document.getElementById('conversation');
+            rec.innerHTML += '<div class="action">' + text + '</div>';
+        }
+
+        function recognized(text) {
+            var rec = document.getElementById('conversation');
+            rec.innerHTML += '<div class="recognized"><div>' + text + '</div></div>';
+        }
+
+        if (annyang) {
+            // Let's define our first command. First the text we expect, and then the function it should call
+            var commands = {
+                'stop': function () {
+                    audio.pause();
+                },
+                    'play track *song': function (song) {
+                    recognized('Play track ' + song);
+                    playSong(song);
+                },
+                    'play *song by *artist': function (song, artist) {
+                    recognized('Play song ' + song + ' by ' + artist);
+                    playSong(song, artist);
+                },
+                    'play song *song': function (song) {
+                    recognized('Play song ' + song);
+                    playSong(song);
+                },
+                    'play *song': function (song) {
+                    recognized('Play ' + song);
+                    playSong(song);
+                },
+
+                    ':nomatch': function (message) {
+                    recognized(message);
+                    communicateAction('Sorry, I don\'t understand this action');
+                }
+            };
+
+            // Add our commands to annyang
+            annyang.addCommands(commands);
+
+
+            // Start listening. You can call this here, or attach this call to an event, button, etc.
+            annyang.start();
+        }
+
+        // annyang.addCallback('er', function () {
+        //     communicateAction('er');
+        // });
+    })();
+  });
+
+  </script>

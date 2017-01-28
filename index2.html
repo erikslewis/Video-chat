@@ -14,6 +14,15 @@
     <div class="page-header">
         <h1 class="animated infinite pulse">Video World Camera</h1>
 
+        </div>
+        <div id="mySidenav" class="sidenav">
+          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+          <a href="index4.html">Music player</a>
+          <a href="index5.html">Picture editor</a>
+          <a href="index2.html">Camera</a>
+          <a href="index.html">Video Chat</a>
+          <a href="#">Contacts</a>
+        </div>
 
 
   <video id="video" width="640" height="480" autoplay></video>
@@ -25,6 +34,19 @@
 
 
 <script>
+
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+}
+
+
+
 
 // Trigger photo take
 document.getElementById("snap").addEventListener("click", function() {
