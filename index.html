@@ -33,6 +33,7 @@
 var video_out = document.getElementById("vid-box");
 
 function login(form) {
+  var config = require('getconfig');
   var mykey = config.MY_KEY;
   var secretkey = config.SECRET_KEY;
     var phone = window.phone = PHONE({
