@@ -62,8 +62,7 @@
 </form>
 
   <script>
-  var mykey = config.MY_KEY;
-  var secretkey = config.SECRET_KEY;
+
   $(document).ready(function () {
   // Initialize the PubNub API connection.
   var pubnub = PUBNUB.init({
@@ -145,3 +144,4 @@ function makeCall(form){
     else phone.dial(form.number.value);
     return false;
 }
+</script>
