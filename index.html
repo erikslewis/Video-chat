@@ -9,7 +9,41 @@
 
   <link rel="stylesheet" href="style.css">
 
+  <link rel="apple-touch-icon href=icon.png">
+  <link rel="apple-touch-startup-image href=startup.png">
 
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,700,400italic" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+  <link rel="stylesheet" href="css/screen.css" type="text/stylesheet" />
+
+  <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+  <script src="http://cdn.pubnub.com/pubnub-3.4.4.js"></script>
+
+
+  <div data-role="page" id="chatPage" data-theme="c" class="type-interior">
+
+  <div data-role="content">
+    <div data-role="header" data-position="fixed" data-tap-toggle="false">
+      <h1>Pub Messenger</h1>
+    </div><!-- /header -->
+
+    <div data-role="content">
+      <ul data-role="listview" id="messageList">
+        <!-- <li><span class="username">User123:</span>This is my message.</li> -->
+      </ul>
+    </div>
+
+    <div data-role="footer" data-theme="c">
+      <textarea id="messageContent"></textarea>
+        <div class="ui-grid-a">
+          <div class="ui-block-a"><a href="#" id="sendMessageButton" data-role="button">Send Message</a></div>
+          <div class="ui-block-b"><a href="#" id="backButton" data-rel="back" data-role="button">Chat Rooms</a></div>
+        </div>
+    </div>
+  </div><!-- /content -->
+
+</div>
 <div id="vid-box"></div>
 
 <form name="loginForm" id="login" action="#" onsubmit="return login(this);">
@@ -27,19 +61,33 @@
     <input type="image" id="myimage" src="img/phone-call-icon.png" type="submit" value="Call"/>
 </form>
 
+  <script>
+  var mykey = config.MY_KEY;
+  var secretkey = config.SECRET_KEY;
+  $(document).ready(function () {
+  // Initialize the PubNub API connection.
+  var pubnub = PUBNUB.init({
+    publish_key: 'pub-c-59314080-afea-4424-b3e7-78c2ad363dc8',
+    subscribe_key: 'sub-c-5a3874d0-e4e2-11e6-b325-02ee2ddab7fe'
+  });
 
-<script>
+  // Grab references for all of our elements.
+  var messageContent = $('#messageContent'),
+      sendMessageButton = $('#sendMessageButton'),
+      messageList = $('#messageList');
+
+
 
 var video_out = document.getElementById("vid-box");
 
 function login(form) {
-  var config = ('getconfig');
+
   var mykey = config.MY_KEY;
   var secretkey = config.SECRET_KEY;
     var phone = window.phone = PHONE({
         number        : form.username.value || "Anonymous", // listen on username line else Anonymous
-        publish_key   : 'your_pub_key',
-        subscribe_key : 'your_sub_key',
+        publish_key   : 'pub-c-59314080-afea-4424-b3e7-78c2ad363dc8',
+        subscribe_key : 'sub-c-5a3874d0-e4e2-11e6-b325-02ee2ddab7fe',
     });
     phone.ready(function(){ form.username.style.background="#55ff5b"; });
     phone.receive(function(session){
@@ -54,5 +102,3 @@ function makeCall(form){
     else phone.dial(form.number.value);
     return false;
 }
-
-</script>
