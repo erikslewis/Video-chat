@@ -16,12 +16,12 @@
   <link rel="stylesheet" href="https://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
 
 
-
+<h1>Insta Face Time </h1>
 
 <div id="vid-box"></div>
 
 <form name="loginForm" id="login" action="#" onsubmit="return login(this);">
-    <input type="text" name="username" id="username" placeholder="Pick a username!" />
+    <input type="text" name="username" id="username" placeholder="Pick Your Username!" /><br>
     <input type="image" id="myimage1" src="img/login-button-hi.png" type="submit" name="login_submit" value="Log In">
 </form>
 <br>
@@ -31,7 +31,7 @@
 <br>
 <br>
 <form name="callForm" id="call" action="#" onsubmit="return makeCall(this);">
-    <input type="text" name="number" placeholder="Enter user to dial!" />
+    <input type="text" name="number" placeholder="Enter users name to call!" /><br>
     <input type="image" id="myimage" src="img/phone-call-icon.png" type="submit" value="Call"/>
 </form>
 
@@ -43,7 +43,7 @@ var video_out = document.getElementById("vid-box");
 
 function login(form) {
 
-  
+
     var phone = window.phone = PHONE({
         number        : form.username.value || "Anonymous", // listen on username line else Anonymous
         publish_key   : 'pub-c-59314080-afea-4424-b3e7-78c2ad363dc8',
