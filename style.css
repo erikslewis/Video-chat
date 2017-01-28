@@ -1,3 +1,9 @@
+h1{
+  color:#00ff00;
+}
+h2{
+  color:#00ff00;
+}
 input{
   color:red;
   text-align: center;
@@ -17,6 +23,11 @@ input{
 body{
   text-align: center;
   background-color: silver;
+  background-image: url('img/water-1945991_1920.jpg');
+  background-repeat: no-repeat;
+background-position: center;
+background-size:cover;
+background-attachment: fixed;
 }
 input[type=text] {
     width: 330px;
