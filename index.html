@@ -14,36 +14,10 @@
 
   <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,700,400italic" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="https://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
-  <link rel="stylesheet" href="css/screen.css" type="text/stylesheet" />
-
-  <script src="https://code.jquery.com/jquery-1.8.2.min.js"></script>
-  <script src="https://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
-  <script src="https://cdn.pubnub.com/pubnub-3.4.4.js"></script>
 
 
-  <div data-role="page" id="chatPage" data-theme="c" class="type-interior">
 
-  <div data-role="content">
-    <div data-role="header" data-position="fixed" data-tap-toggle="false">
-      <h1>Pub Messenger</h1>
-    </div><!-- /header -->
 
-    <div data-role="content">
-      <ul data-role="listview" id="messageList">
-        <!-- <li><span class="username">User123:</span>This is my message.</li> -->
-      </ul>
-    </div>
-
-    <div data-role="footer" data-theme="c">
-      <textarea id="messageContent"></textarea>
-        <div class="ui-grid-a">
-          <div class="ui-block-a"><a href="#" id="sendMessageButton" data-role="button">Send Message</a></div>
-          <div class="ui-block-b"><a href="#" id="backButton" data-rel="back" data-role="button">Chat Rooms</a></div>
-        </div>
-    </div>
-  </div><!-- /content -->
-
-</div>
 <div id="vid-box"></div>
 
 <form name="loginForm" id="login" action="#" onsubmit="return login(this);">
@@ -62,61 +36,6 @@
 </form>
 
   <script>
-
-  $(document).ready(function () {
-  // Initialize the PubNub API connection.
-  var pubnub = PUBNUB.init({
-    publish_key: 'pub-c-59314080-afea-4424-b3e7-78c2ad363dc8',
-    subscribe_key: 'sub-c-5a3874d0-e4e2-11e6-b325-02ee2ddab7fe'
-  });
-
-  // Grab references for all of our elements.
-  var messageContent = $('#messageContent'),
-      sendMessageButton = $('#sendMessageButton'),
-      messageList = $('#messageList');
-
-      function handleMessage(message) {
-   var messageEl = $("<li class='message'>"
-       + "<span class='username'>" + message.username + ": </span>"
-       + message.text
-       + "</li>");
-   messageList.append(messageEl);
-   messageList.listview('refresh');
-
-   // Scroll to bottom of page
-   $("html, body").animate({ scrollTop: $(document).height() - $(window).height() }, 'slow');
- };
-
- // Compose and send a message when the user clicks our send message button.
- sendMessageButton.click(function (event) {
-   var message = messageContent.val();
-
-   if (message != '') {
-     pubnub.publish({
-       channel: 'chat',
-       message: {
-         username: 'test',
-         text: message
-       }
-     });
-
-     messageContent.val("");
-   }
- });
-
- // Also send a message when the user hits the enter button in the text area.
- messageContent.bind('keydown', function (event) {
-   if((event.keyCode || event.charCode) !== 13) return true;
-   sendMessageButton.click();
-   return false;
- });
-
- // Subscribe to messages coming in from the channel.
- pubnub.subscribe({
-   channel: 'chat',
-   message: handleMessage
- });
-});
 
 
 
