@@ -84,3 +84,30 @@ body {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
+#download {
+  	    text-align: center;
+  	    cursor:pointer;
+      border-style: double;
+  	    padding:3px;
+        margin: 0 auto;
+        display: block;
+        position: relative;
+        font-size: 38px;
+        font-weight: bolder;
+        -webkit-text-stroke: 2px blue;
+       color: yellow;
+       text-shadow:
+           3px 3px 0 #000,
+         -1px -1px 0 #000,
+          1px -1px 0 #000,
+          -1px 1px 0 #000,
+           1px 1px 0 #000;
+        text-align:center;
+        padding: 7px 10px 8px 10px !important;
+      width: 500px;
+      background-color: black;
+      border: 8px outset yellow;
+      border-radius: 12px;
+  	}
+  	#download:hover {
+  	    color:#fff;
