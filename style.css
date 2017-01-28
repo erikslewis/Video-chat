@@ -157,3 +157,92 @@ body {
   from{ bottom:-100px; opacity:0 }
   to{ bottom:0; opacity:1 }
 }
+#conversation {
+    padding: 20px;
+    text-align: center;
+    display: block;
+    position: relative;
+    margin: auto;
+}
+#conversation::before {
+    content:"";
+    height: 1px;
+    width: 200px;
+    background-color: black;
+    display: block;
+    margin: 10px auto;
+}
+#conversation img {
+    margin-top: 5px;
+    display: block;
+    text-align: center;
+    width: 350px;
+    height: 300px;
+}
+
+img#selector {
+      width:100%;
+      height:100%;
+    }
+
+main {
+    flex: 1;
+    margin: 20px auto;
+    max-width: 900px;
+    width: 900px;
+}
+
+.action, .recognized {
+    padding: 10px;
+    position: relative;
+    margin-bottom: 10px;
+    width:80%;
+}
+.action {
+    text-align: center;
+    background-color: black;
+    margin:auto;
+    border-radius: 5px 5px 0 5px;
+}
+.action:after {
+    content:"";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-width: 18px;
+    border-style: solid;
+    border-color: transparent transparent black transparent;
+    bottom: 0px;
+    right: -17px;
+    text-align: center;
+    display: block;
+
+}
+.recognized {
+    text-align: center;
+    background-color: black;
+    font-weight: bold;
+    border-radius: 18px;
+    display: block;
+    position: relative;
+    margin: auto;
+}
+.recognized:after {
+    content:"";
+    position: relative;
+    width: 0;
+    height: 0;
+    border-width: 18px;
+    border-style: solid;
+    border-color: transparent transparent black transparent;
+    bottom: 0px;
+    text-align: center;
+    display: block;
+    margin: auto;
+}
+.recognized > div:before {
+    content: open-quote
+}
+.recognized > div:after {
+    content: close-quote
+}
