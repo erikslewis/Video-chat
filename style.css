@@ -326,3 +326,9 @@ margin: auto;
 li a:hover {
     background-color: #111;
 }
+img{
+  text-align: center;
+  margin: 0 auto;
+  position: relative;
+  display: inline-block;
+}
