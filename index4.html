@@ -6,17 +6,36 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 </head>
-<h1>WELCOME TO VIDOE QUICK CHAT VOICE COMMANDS MUSIC PLAYER</h1>
 <div id="main">
-<div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="index4.html">Music Player</a>
-  <a href="index5.html">Picture Editor</a>
-  <a href="index2.html">HD Camera</a>
-  <a href="index.html">HD Video Chat</a>
-  <a href="#">Contacts</a>
-</div>
-</div>
+<h1> QUICK CHAT VOICE COMMANDS MUSIC PLAYER</h1>
+
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="index4.html">Voice Cammand Music Player</a>
+    <a href="index.html">HD Video Chat</a>
+      <a href="index2.html">HD Camera</a>
+    <a href="index5.html">Picture Editor</a>
+    <a href="index3.html">Contacts</a>
+    <a>
+    <center>
+    <FORM method=GET action="http://www.google.com/search">
+    <TABLE bgcolor="black"><tr><td>
+    <A HREF="http://www.google.com/">
+    <IMG SRC="http://www.google.com/logos/Logo_40wht.gif" <br></A>
+    <INPUT TYPE=text name=q size=31 maxlength=255 value="">
+    <INPUT TYPE=hidden name=hl value="en">
+    <INPUT type=submit name=btnG VALUE="Google Search">
+    </td></tr></TABLE>
+    </FORM>
+  </center></a>
+    <!-- Search Google -->
+  </div>
+
+
+
+    <span style="font-size:30px;cursor:pointer;color:white;border-style:solid;border-width:thick;border-color:white;border-radius:10px;padding-right:3px;padding-left:3px;background-color:black;" onclick="openNav()">&#9776; Controls</span>
+  <br>
+  <br>
 
 <main>
 <h2>
@@ -38,6 +57,17 @@
 <div>
 
 <script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+}
+
+
 $(document).ready(function() {
 
 
