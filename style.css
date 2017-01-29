@@ -2,7 +2,8 @@ h1{
   color:white;
 }
 h2{
-  color:#00ff00;
+  color:white;
+  background-color: black;
 }
 input{
   color:red;
