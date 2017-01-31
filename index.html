@@ -11,6 +11,7 @@
     <script src="https://cdn.pubnub.com/pubnub.min.js"></script>
     <script src="https://kevingleason.me/SimpleRTC/js/webrtc.js"></script>
 
+
   <link rel="stylesheet" href="style.css">
 
 
@@ -19,7 +20,9 @@
   <link rel="stylesheet" href="https://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
   <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
   </head>
+
 <div id="main">
 <h1>Welcome To Video Quick Chat </h1>
 <div id="mySidenav" class="sidenav">
@@ -52,6 +55,7 @@
 
 
 <div id="vid-box"></div>
+<div id="vid-thumb"></div>
 
 <form name="loginForm" id="login" action="#" onsubmit="return login(this);">
     <input type="text" name="username" id="username" placeholder="Pick Your Username!" /><br><br>
@@ -67,7 +71,13 @@
     <input type="text" name="number" placeholder="Enter users name to call!" /><br><br>
     <input class="animated infinite pulse"type="image" id="myimage" src="img/phone-call-icon.png" type="submit" value="Call"/>
 </form>
+<div id="inCall"> <!-- Buttons for in call features -->
+	<button id="end" onclick="end()">End</button> <button id="mute" onclick="mute()">Mute</button> <button id="pause" onclick="pause()">Pause</button>
 </div>
+</div>
+
+
+
 
 
 
@@ -84,76 +94,76 @@ function closeNav() {
 
 
 var video_out = document.getElementById("vid-box");
-// var vid_thumb = document.getElementById("vid-thumb");
-//
-//
-// function login(form) {
-// 	var phone = window.phone = PHONE({
-// 	    number        : form.username.value || "Anonymous", // listen on username line else Anonymous
-// 	    publish_key   : 'pub-c-59314080-afea-4424-b3e7-78c2ad363dc8',
-// 	    subscribe_key : 'sub-c-5a3874d0-e4e2-11e6-b325-02ee2ddab7fe',
-//       var ctrl = window.ctrl = CONTROLLER(phone);
-// ctrl.ready(function(){
-// 	form.username.style.background="#55ff5b"; // Turn input green
-// 	form.login_submit.hidden="true";	// Hide login button
-// 	ctrl.addLocalStream(vid_thumb);		// Place local stream in div
-// });
-//
-// ctrl.receive(function(session){
-//     session.connected(function(session){ video_out.appendChild(session.video); });
-//     session.ended(function(session) { ctrl.getVideoElement(session.number).remove(); });
-// });
-// ctrl.receive(function(session){
-//     session.connected(function(session){ video_out.appendChild(session.video); });
-//     session.ended(function(session) { ctrl.getVideoElement(session.number).remove(); });
-// });
-//
-//
-// function end(){
-// 	ctrl.hangup();
-// }
-//
-// function mute(){
-// 	var audio = ctrl.toggleAudio();
-// 	if (!audio) $("#mute").html("Unmute");
-// 	else $("#mute").html("Mute");
-// }
-//
-// function pause(){
-// 	var video = ctrl.toggleVideo();
-// 	if (!video) $('#pause').html('Unpause');
-// 	else $('#pause').html('Pause');
-// }
-// unction login(form){
-// 	...
-// 	ctrl.videoToggled(function(session, isEnabled){
-// 		ctrl.getVideoElement(session.number).toggle(isEnabled); // Hide video is stream paused
-// 	});
-// 	ctrl.audioToggled(function(session, isEnabled){
-// 		ctrl.getVideoElement(session.number).css("opacity",isEnabled ? 1 : 0.75); // 0.75 opacity is audio muted
-// 	});
-// 	return false;
-// }
+var vid_thumb = document.getElementById("vid-thumb");
 
 function login(form) {
-
-
-    var phone = window.phone = PHONE({
-        number        : form.username.value || "Anonymous", // listen on username line else Anonymous
-        publish_key   : 'pub-c-59314080-afea-4424-b3e7-78c2ad363dc8',
-        subscribe_key : 'sub-c-5a3874d0-e4e2-11e6-b325-02ee2ddab7fe',
-    });
-    phone.ready(function(){ form.username.style.background="#55ff5b"; });
-    phone.receive(function(session){
-        session.connected(function(session) { video_out.appendChild(session.video); });
-        session.ended(function(session) { video_out.innerHTML=''; });
-    });
-    return false;   // So the form does not submit.
+	var phone = window.phone = PHONE({
+	    number        : form.username.value || "Anonymous", // listen on username line else Anonymous
+	    publish_key   : 'pub-c-59314080-afea-4424-b3e7-78c2ad363dc8',
+	    subscribe_key : 'sub-c-5a3874d0-e4e2-11e6-b325-02ee2ddab7fe',
+	});
+	var ctrl = window.ctrl = CONTROLLER(phone);
+	ctrl.ready(function(){ 	form.username.style.background="#55ff5b"; // Turn input green
+	form.login_submit.hidden="true";	// Hide login button
+	ctrl.addLocalStream(vid_thumb);		// Place local stream in div
+});				// Called when ready to receive call
+ctrl.receive(function(session){
+  session.connected(function(session){ video_out.appendChild(session.video); });
+  session.ended(function(session) { ctrl.getVideoElement(session.number).remove(); });
+});// Called on incoming call/call ended
+ctrl.videoToggled(function(session, isEnabled){
+  ctrl.getVideoElement(session.number).toggle(isEnabled); // Hide video is stream paused
+});
+ctrl.audioToggled(function(session, isEnabled){
+  ctrl.getVideoElement(session.number).css("opacity",isEnabled ? 1 : 0.75); // 0.75 opacity is audio muted
+});
+return false;
 }
-
 function makeCall(form){
-    if (!window.phone) alert("Login First!");
-    else phone.dial(form.number.value);
-    return false;
+if (!window.phone) alert("Login First!");
+var num = form.number.value;
+if (phone.number()==num) return false; // No calling yourself!
+ctrl.isOnline(num, function(isOn){		// Check if other user is listening for calls
+  if (isOn) ctrl.dial(num);		// Dial if they are online
+  else alert("User if Offline");	// Alert if not
+});
+return false; // So form does not submit
 }
+
+function end(){
+	ctrl.hangup();
+}
+function mute(){
+	var audio = ctrl.toggleAudio();
+	if (!audio) $("#mute").html("Unmute");
+	else $("#mute").html("Mute");
+}
+
+function pause(){
+	var video = ctrl.toggleVideo();
+	if (!video) $('#pause').html('Unpause');
+	else $('#pause').html('Pause');
+}
+
+// function login(form) {
+//
+//
+//     var phone = window.phone = PHONE({
+//         number        : form.username.value || "Anonymous", // listen on username line else Anonymous
+//         publish_key   : 'pub-c-59314080-afea-4424-b3e7-78c2ad363dc8',
+//         subscribe_key : 'sub-c-5a3874d0-e4e2-11e6-b325-02ee2ddab7fe',
+//     });
+//     phone.ready(function(){ form.username.style.background="#55ff5b"; });
+//     phone.receive(function(session){
+//         session.connected(function(session) { video_out.appendChild(session.video); });
+//         session.ended(function(session) { video_out.innerHTML=''; });
+//     });
+//     return false;   // So the form does not submit.
+// }
+//
+// function makeCall(form){
+//     if (!window.phone) alert("Login First!");
+//     else phone.dial(form.number.value);
+//     return false;
+// }
 </script>
