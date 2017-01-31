@@ -122,7 +122,7 @@ function login(form) {
   function makeCall(form){
 	if (!window.phone) alert("Login First!");
 	var num = form.number.value;
-	if (phone.number()==num) return false; // No calling yourself!
+	if (phone.number()==num) return true; // No calling yourself!
 	ctrl.isOnline(num, function(isOn){		// Check if other user is listening for calls
 		if (isOn) ctrl.dial(num);		// Dial if they are online
 		else alert("User if Offline");	// Alert if not
