@@ -3,21 +3,17 @@
 <head>
 
   <meta charset="utf-8">
-  <meta name="description" content="WebRTC code samples">
+
   <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
-  <meta itemprop="description" content="Client-side WebRTC code samples">
-  <meta itemprop="image" content="../../../images/webrtc-icon-192x192.png">
-  <meta itemprop="name" content="WebRTC code samples">
+
   <meta name="mobile-web-app-capable" content="yes">
   <meta id="theme-color" name="theme-color" content="#ffffff">
 
   <base target="_blank">
+  <link rel="stylesheet" href="style.css">
+  <title>Camera with filter</title>
 
-  <title>getUserMedia + CSS filters</title>
 
-  <link rel="icon" sizes="192x192" href="../../../images/webrtc-icon-192x192.png">
-  <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="../../../css/main.css">
 
   <style>
     .none {
@@ -54,7 +50,7 @@
 <body>
   <div id="container">
 
-    
+
 
     <video autoplay></video>
 
@@ -68,7 +64,7 @@
     </select>
 
     <button id="snapshot">Take snapshot</button>
-
+<a id="download">Download Your Picture</a><br>
     <canvas></canvas>
 
 
@@ -93,9 +89,23 @@ snapshotButton.onclick = function() {
   canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
 };
 
+
 filterSelect.onchange = function() {
   video.className = filterSelect.value;
 };
+function downloadCanvas(link, canvasId, filename) {
+    link.href = document.querySelector(canvasId).toDataURL();
+    link.download = filename;
+}
+
+/**
+ * The event handler for the link's onclick event. We give THIS as a
+ * parameter (=the link element), ID of the canvas and a filename.
+*/
+document.getElementById('download').addEventListener('click', function() {
+    downloadCanvas(this, 'canvas', 'GoFilterYourSelf.png');
+}, false);
+
 
 var constraints = {
   audio: false,
@@ -111,8 +121,13 @@ function handleError(error) {
   console.log('navigator.getUserMedia error: ', error);
 }
 
+
+
 navigator.mediaDevices.getUserMedia(constraints).
     then(handleSuccess).catch(handleError);
+
+
+
 </script>
 
 </body>
