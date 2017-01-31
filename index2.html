@@ -2,18 +2,37 @@
 <head>
 
   <meta charset="utf-8">
-  <meta name="description" content="WebRTC code samples">
+
   <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
-  <meta itemprop="description" content="Client-side WebRTC code samples">
-  <meta itemprop="image" content="../../../images/webrtc-icon-192x192.png">
-  <meta itemprop="name" content="WebRTC code samples">
+
   <meta name="mobile-web-app-capable" content="yes">
   <meta id="theme-color" name="theme-color" content="#ffffff">
-
+  <link rel="stylesheet" href="style.css">
   <base target="_blank">
 
   <title>Video Recorder Recording</title>
-
+  <h1>Welcome To Video Quick Chat </h1>
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="index4.html">Voice Cammand Music Player</a>
+    <a href="index.html">HD Video Chat</a>
+      <a href="index2.html">HD Camera</a>
+    <a href="index5.html">Picture Editor</a>
+    <a href="index3.html">Contacts</a>
+    <a>
+    <center>
+    <FORM method=GET action="https://www.google.com/search">
+    <TABLE bgcolor="black"><tr><td>
+    <A HREF="https://www.google.com/">
+    <IMG SRC="https://www.google.com/logos/Logo_40wht.gif" <br></A>
+    <INPUT TYPE=text name=q size=31 maxlength=255 value="">
+    <INPUT TYPE=hidden name=hl value="en">
+    <INPUT type=submit name=btnG VALUE="Google Search">
+    </td></tr></TABLE>
+    </FORM>
+  </center></a>
+    <!-- Search Google -->
+  </div>
 
 
 </head>
@@ -43,10 +62,21 @@
 
   <!-- include adapter for srcObject shim -->
   <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
-  
+
 
 <script>
 'use strict';
+
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+}
+
 
 /* globals MediaRecorder */
 
