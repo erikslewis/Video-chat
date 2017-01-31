@@ -134,7 +134,7 @@ function login(form) {
 	var ctrl = window.ctrl = CONTROLLER(phone);
   ctrl.ready(function(){
 	form.username.style.background="#55ff5b"; // Turn input green
-	form.login_submit="true";	// Hide login button
+		// Hide login button
 	ctrl.addLocalStream(vid_thumb);		// Place local stream in div
 });				// Called when ready to receive call
 ctrl.receive(function(session){
