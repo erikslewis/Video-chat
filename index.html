@@ -134,7 +134,7 @@ function login(form) {
 	var ctrl = window.ctrl = CONTROLLER(phone, get_xirsys_servers);
 	ctrl.ready(function(){
 		form.username.style.background="#55ff5b";
-		
+		form.login_submit.hidden="true";
 		ctrl.addLocalStream(vid_thumb);
 		addLog("Logged in as " + form.username.value);
 	});
