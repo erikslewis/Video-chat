@@ -22,7 +22,7 @@ body{
 	padding: 0px;
 	padding-top: 30px;
 	background-color:;
-  background-image: url('/img/smartphone-1445489_960_720.jpg');
+  background-image: url('');
 	font-weight: normal;
 	overflow: hidden;
 }
@@ -82,7 +82,7 @@ input[type="button"]{
 	height: 30px;
 	padding: 5px 5px 5px 36px;
 	margin: 5px 0 10px 0;
-	background: url("/img/title5.jpg") no-repeat 3px 0px;
+	background: url("") no-repeat 3px 0px;
 	background-size: auto 35px;
 	text-decoration: none;
 	font-weight: bold;
@@ -117,7 +117,7 @@ input[type="button"]{
 }
 .left_mobile_menu, .right_mobile_menu{
 	position:absolute;
-	background: url('../img/sprites.png') no-repeat -50px -100px;
+	background: url('') no-repeat -50px -100px;
 	width:50px;
 	height:50px;
 	display:block;
@@ -253,7 +253,7 @@ input[type="button"]{
 	padding:0 8px 0 8px;
 }
 .ddsmoothmenu ul li ul li.more > a{
-	background-image: url('/paint/img/right.png');
+	background-image: url('');
 	background-repeat: no-repeat;
 	background-position: 97% 30%;
 }
@@ -322,7 +322,7 @@ input[type="button"]{
 	.ddsmoothmenu .icon{
 		width:100%;
 		max-width:50px;
-		background-image: url('../img/sprites.png');
+		background-image: url('');
 		background-position: -91px -88px;
 		color: transparent !important;
 	}
@@ -414,7 +414,7 @@ input[type="button"]{
 #main_color_rgb a.red{ background-color:#ff0000; }
 #main_color_rgb a.green{ background-color:#00ff00; }
 #main_color_rgb a.blue{ background-color:#0000ff; }
-#main_color_rgb a.alpha{ background: url('../img/sprites.png') no-repeat -550px -50px; }
+#main_color_rgb a.alpha{ background: url('') no-repeat -550px -50px; }
 
 #preview{
 	width:150px;
@@ -431,7 +431,7 @@ input[type="button"]{
 #menu_left_container a{
 	float:left;
 	border: 1px solid #393939;
-	background: #989898 url('../img/sprites.png') no-repeat 0px 0px;
+	background: #989898 url('') no-repeat 0px 0px;
 	width:24px;
 	height:24px;
 	margin:0px 1px 1px 0px;
