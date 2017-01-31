@@ -111,6 +111,12 @@ function login(form) {
       session.connected(function(session){ video_out.appendChild(session.video); });
        session.ended(function(session) { ctrl.getVideoElement(session.number).remove(); });   // Call Ended
   	});	// Called on incoming call/call ended
+    ctrl.videoToggled(function(session, isEnabled){
+  ctrl.getVideoElement(session.number).toggle(isEnabled); // Hide video is stream paused
+});
+ctrl.audioToggled(function(session, isEnabled){
+  ctrl.getVideoElement(session.number).css("opacity",isEnabled ? 1 : 0.75); // 0.75 opacity is audio muted
+});
   	return false; //prevents form from submitting
   }
   function makeCall(form){
@@ -123,7 +129,20 @@ function login(form) {
 	});
 	return false; // So form does not submit
 }
+function end(){
+	ctrl.hangup();
+}
+function mute(){
+	var audio = ctrl.toggleAudio();
+	if (!audio) $("#mute").html("Unmute");
+	else $("#mute").html("Mute");
+}
 
+function pause(){
+	var video = ctrl.toggleVideo();
+	if (!video) $('#pause').html('Unpause');
+	else $('#pause').html('Pause');
+}
 
 // function login(form) {
 //
