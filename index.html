@@ -120,6 +120,8 @@ ctrl.isOnline(num, function(isOn){		// Check if other user is listening for call
   if (isOn) ctrl.dial(num);		// Dial if they are online
   else alert("User if Offline");	// Alert if not
 });
+return false; // So form does not submit
+}
 
 ctrl.videoToggled(function(session, isEnabled){
 		ctrl.getVideoElement(session.number).toggle(isEnabled); // Hide video is stream paused
@@ -143,7 +145,7 @@ function pause(){
 	var video = ctrl.toggleVideo();
 	if (!video) $('#pause').html('Unpause');
 	else $('#pause').html('Pause');
-}}
+}
 
 // function login(form) {
 //
