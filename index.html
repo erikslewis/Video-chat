@@ -121,31 +121,31 @@ ctrl.isOnline(num, function(isOn){		// Check if other user is listening for call
   else alert("User if Offline");	// Alert if not
 });
 return false; // So form does not submit
-}
-
-ctrl.videoToggled(function(session, isEnabled){
-		ctrl.getVideoElement(session.number).toggle(isEnabled); // Hide video is stream paused
-	});
-	ctrl.audioToggled(function(session, isEnabled){
-		ctrl.getVideoElement(session.number).css("opacity",isEnabled ? 1 : 0.75); // 0.75 opacity is audio muted
-	});
-return false; // So form does not submit
-}
-
-function end(){
-	ctrl.hangup();
-}
-function mute(){
-	var audio = ctrl.toggleAudio();
-	if (!audio) $("#mute").html("Unmute");
-	else $("#mute").html("Mute");
-}
-
-function pause(){
-	var video = ctrl.toggleVideo();
-	if (!video) $('#pause').html('Unpause');
-	else $('#pause').html('Pause');
-}
+}}
+//
+// ctrl.videoToggled(function(session, isEnabled){
+// 		ctrl.getVideoElement(session.number).toggle(isEnabled); // Hide video is stream paused
+// 	});
+// 	ctrl.audioToggled(function(session, isEnabled){
+// 		ctrl.getVideoElement(session.number).css("opacity",isEnabled ? 1 : 0.75); // 0.75 opacity is audio muted
+// 	});
+// return false; // So form does not submit
+// }
+//
+// function end(){
+// 	ctrl.hangup();
+// }
+// function mute(){
+// 	var audio = ctrl.toggleAudio();
+// 	if (!audio) $("#mute").html("Unmute");
+// 	else $("#mute").html("Mute");
+// }
+//
+// function pause(){
+// 	var video = ctrl.toggleVideo();
+// 	if (!video) $('#pause').html('Unpause');
+// 	else $('#pause').html('Pause');
+// }
 
 // function login(form) {
 //
