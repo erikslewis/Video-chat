@@ -120,8 +120,7 @@ ctrl.isOnline(num, function(isOn){		// Check if other user is listening for call
   if (isOn) ctrl.dial(num);		// Dial if they are online
   else alert("User if Offline");	// Alert if not
 });
-return false;
-}
+
 ctrl.videoToggled(function(session, isEnabled){
 		ctrl.getVideoElement(session.number).toggle(isEnabled); // Hide video is stream paused
 	});
