@@ -107,7 +107,7 @@ function login(form) {
         publish_key   : 'pub-c-59314080-afea-4424-b3e7-78c2ad363dc8',
         subscribe_key : 'sub-c-5a3874d0-e4e2-11e6-b325-02ee2ddab7fe',
     });
-    phone.ready(function(){ form.username.style.background="#55ff5b"; addLocalStream(vid_thumb);	 });
+    phone.ready(function(){ form.username.style.background="#55ff5b";	 });
     phone.receive(function(session){
         session.connected(function(session) { video_out.appendChild(session.video); });
         session.ended(function(session) { video_out.innerHTML=''; });
