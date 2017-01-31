@@ -83,15 +83,15 @@
 
 
 <script>
-// function openNav() {
-//     document.getElementById("mySidenav").style.width = "250px";
-//     document.getElementById("main").style.marginLeft = "250px";
-// }
-//
-// function closeNav() {
-//     document.getElementById("mySidenav").style.width = "0";
-//     document.getElementById("main").style.marginLeft= "0";
-// }
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+}
 
 
 // var video_out = document.getElementById("vid-box");
@@ -131,7 +131,7 @@ function login(form) {
 	    publish_key   : 'pub-c-59314080-afea-4424-b3e7-78c2ad363dc8', // Your Pub Key
 	    subscribe_key : 'sub-c-5a3874d0-e4e2-11e6-b325-02ee2ddab7fe', // Your Sub Key
 	});
-	var ctrl = window.ctrl = CONTROLLER(phone, get_xirsys_servers);
+	var ctrl = window.ctrl = CONTROLLER(phone);
 	ctrl.ready(function(){
 		form.username.style.background="#55ff5b";
 		form.login_submit.hidden="true";
