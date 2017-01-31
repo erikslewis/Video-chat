@@ -112,6 +112,8 @@ ctrl.receive(function(session){
     session.connected(function(session){ video_out.appendChild(session.video); });
     session.ended(function(session) { ctrl.getVideoElement(session.number).remove(); });
 });	// Called on incoming call/call ended
+return false;
+}
 function makeCall(form){
 if (!window.phone) alert("Login First!");
 var num = form.number.value;
@@ -121,7 +123,7 @@ ctrl.isOnline(num, function(isOn){		// Check if other user is listening for call
   else alert("User if Offline");	// Alert if not
 });
 return false; // So form does not submit
-}}
+}
 //
 // ctrl.videoToggled(function(session, isEnabled){
 // 		ctrl.getVideoElement(session.number).toggle(isEnabled); // Hide video is stream paused
