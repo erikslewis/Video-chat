@@ -192,3 +192,99 @@ function download() {
 </script>
 </body>
 </html>
+
+
+
+<link rel="stylesheet" href="style.css">
+
+
+
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,700,400italic" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <div class="page-header">
+        <h1 class="animated infinite pulse">Video Quick Chat HD Camera</h1>
+
+        </div>
+        <div id="mySidenav" class="sidenav">
+          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+          <a href="index4.html">Voice Cammand Music Player</a>
+          <a href="index.html">HD Video Chat</a>
+            <a href="index2.html">HD Camera</a>
+          <a href="index5.html">Picture Editor</a>
+          <a href="index3.html">Contacts</a>
+          <a>
+          <center>
+          <FORM method=GET action="http://www.google.com/search">
+          <TABLE bgcolor="black"><tr><td>
+          <A HREF="http://www.google.com/">
+          <IMG SRC="http://www.google.com/logos/Logo_40wht.gif" <br></A>
+          <INPUT TYPE=text name=q size=31 maxlength=255 value="">
+          <INPUT TYPE=hidden name=hl value="en">
+          <INPUT type=submit name=btnG VALUE="Google Search">
+          </td></tr></TABLE>
+          </FORM>
+        </center></a>
+          <!-- Search Google -->
+        </div>
+
+
+
+          <span style="font-size:30px;cursor:pointer;color:white;border-style:solid;border-width:thick;border-color:white;border-radius:10px;padding-right:3px;padding-left:3px;background-color:black;" onclick="openNav()">&#9776; Controls</span>
+        <br>
+        <br>
+
+  <video id="video" width="640" height="480" autoplay></video>
+      <button id="snap">Take Photo</button>
+      <canvas id="canvas" width="640" height="480"></canvas><br>
+    <a id="download">Download Your Picture</a><br>
+
+</div>
+
+
+<script>
+
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+}
+
+
+var canvas = document.getElementById('canvas');
+var context = canvas.getContext('2d');
+var video = document.getElementById('video');
+
+
+// Trigger photo take
+document.getElementById("snap").addEventListener("click", function() {
+	context.drawImage(video, 0, 0, 640, 480);
+});
+
+function downloadCanvas(link, canvasId, filename) {
+    link.href = document.getElementById(canvasId).toDataURL();
+    link.download = filename;
+}
+
+/**
+ * The event handler for the link's onclick event. We give THIS as a
+ * parameter (=the link element), ID of the canvas and a filename.
+*/
+document.getElementById('download').addEventListener('click', function() {
+    downloadCanvas(this, 'canvas', 'GoFilterYourSelf.png');
+}, false);
+
+// Get access to the camera!
+if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    // Not adding `{ audio: true }` since we only want video now
+    navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+        video.src = window.URL.createObjectURL(stream);
+        video.play();
+    });
+}
+</script>
