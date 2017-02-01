@@ -100,7 +100,7 @@ body {
   	    text-align: center;
   	    cursor:pointer;
       border-style: double;
-  	    padding:3px;
+  	    padding:px;
         margin: 0 auto;
         display: block;
         position: relative;
@@ -260,7 +260,7 @@ main {
 }
 video{
   border-width: thick;
-  border-color: #00ff00;
+  border-color: white;
 border-style: double;
 text-align: center;
 margin:auto;
@@ -284,7 +284,7 @@ button{
 }
 canvas{
   border-width: thick;
-  border-color: #00ff00;
+  border-color: white;
 border-style: double;
 text-align: center;
 margin:auto;
