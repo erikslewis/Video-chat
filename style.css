@@ -1,5 +1,9 @@
 h1{
-  color:white;
+  color: white;
+  font-size: 3em;
+  margin: 0;
+  -webkit-text-stroke: 2.2px black;
+  font-weight: bolder;
 }
 h2{
   color:white;
@@ -9,6 +13,32 @@ input{
   color:red;
   text-align: center;
 
+}
+img.fit{
+  width: 35px;
+    display: block;
+    height: 40px;
+}
+img.fit1{
+  width: 45px;
+  display: block;
+}
+img.fit2{
+  width: 95px;
+  display: block;
+  margin: 0 auto;
+}
+img.fit3{
+  width: 65px;
+  display: block;
+  margin: auto;
+  margin-left: 101px;
+}
+input.fit2{
+  width: 95px;
+  display: block;
+  margin: 0 auto;
+  color: black;
 }
 
 #myimage{
@@ -72,7 +102,8 @@ body {
     font-size: 28px;
     color: #818181;
     display: block;
-    transition: 0.3s
+    transition: 0.3s;
+
 }
 
 .sidenav a:hover, .offcanvas a:focus{
@@ -321,6 +352,8 @@ margin: auto;
 
 
 }
+
+
 
 /* Change the link color to #111 (black) on hover */
 li a:hover {
