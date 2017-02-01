@@ -15,9 +15,13 @@ input{
 
 }
 img.fit{
-  width: 35px;
+  width: 65px;
     display: block;
     height: 40px;
+}
+img.fit4{
+  width: 55px;
+  display: block;
 }
 img.fit1{
   width: 45px;
@@ -39,6 +43,7 @@ input.fit2{
   display: block;
   margin: 0 auto;
   color: black;
+  font-weight: bolder;
 }
 
 #myimage{
