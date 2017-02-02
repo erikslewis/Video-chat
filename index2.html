@@ -59,7 +59,7 @@
       <button id="record" disabled>Record</button>
       <button id="play" disabled>Play</button>
 </div>
-<button id="download">Download Your Video</button>
+<button  id="download">Download Your Video</button>
 </div>
 
   </div>
@@ -71,15 +71,6 @@
 <script>
 'use strict';
 
-function openNav() {
-    document.getElementById("mySidenav").style.width = "450px";
-    document.getElementById("main").style.marginLeft = "250px";
-}
-
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("main").style.marginLeft= "0";
-}
 
 
 /* globals MediaRecorder */
@@ -223,6 +214,17 @@ function download() {
     window.URL.revokeObjectURL(url);
   }, 100);
 }
+
+function openNav() {
+    document.getElementById("mySidenav").style.width = "450px";
+    document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+}
+
 </script>
 </body>
 </html>

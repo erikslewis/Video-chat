@@ -390,7 +390,11 @@ label.fil{
 background-color: black
 
 }
-
+#dowload.D{
+  color:red;
+  text-align: center;
+  margin: 0 auto;
+}
 ul {
     list-style-type:none;
     margin: 0;
