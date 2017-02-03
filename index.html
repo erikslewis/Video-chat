@@ -71,9 +71,7 @@
     <input type="text" name="number" placeholder="Enter users name to call!" /><br><br>
     <input class="animated infinite pulse"type="image" id="myimage" src="img/148476564950119.png" type="submit" value="Call"/>
 </form>
-<div id="inCall"> <!-- Buttons for in call features -->
-	<button id="end" onclick="end()">End</button> <button id="mute" onclick="mute()">Mute</button> <button id="pause" onclick="pause()">Pause</button>
-</div>
+
 </div>
 
 
@@ -111,7 +109,7 @@ function login(form) {
 
     var ctrl = window.ctrl = CONTROLLER(phone);
      ctrl.ready(function(){
-   	form.username.style.background="#55ff5b"; // Turn input green
+   	form.username.style.background="blue"; // Turn input green
    		form.hidden="true";// Hide login button
    	ctrl.addLocalStream(vid_thumb);		// Place local stream in div
    });

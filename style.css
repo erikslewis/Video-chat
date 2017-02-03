@@ -359,6 +359,16 @@ position: relative;
 display: block;
 
 }
+#vid-thumb{
+  width: 100px;
+  text-align: center;
+position: relative;
+  display: inline-block;
+margin-left: 210px;
+  justify-content: center;
+
+}
+
 button{
   height: 55px;
   width: 55px;
